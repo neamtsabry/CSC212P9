@@ -44,8 +44,8 @@ Right now, when I run all the tests in this project, I get the following output:
     
     Tests run: 126, Failures: 3, Errors: 97, Skipped: 0
 
-So there are 26 passing tets, and 100 failing tests.
+So there are 26 passing tets, and 100 failing tests (3 + 97).
 
-Your score on this assignment will range up to 100 -- the number of tests that your code pass, provided (1) there are no code compilation problems with your code (red lines or Problems in Eclipse).  (2) you do not rename any methods or modify the tests in any way, and (3) you resolve any infinite loops in your code (better to comment out that method and have it crash than run forever -- it prevents other tests from running.
+Your score on this assignment will range up to 100 -- the number of tests that your code pass (minus the 26 that already pass for ``FixedSizeList``), provided (1) there are no code compilation problems with your code (red lines or Problems in Eclipse).  (2) you do not rename any methods or modify the tests in any way, and (3) you resolve any infinite loops in your code (better to comment out that method and have it crash than run forever -- it prevents other tests from running.
 
 
