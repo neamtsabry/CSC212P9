@@ -1,7 +1,7 @@
-# CSC212P6
-List Data Structures &amp; Testing
+# CSC212P69
+List Data Structures &amp; Testing (Revisited)
 
-## About P6
+## About P9
 
 ### P6List Interface
 Recall that an interface in Java defines methods but not implementations. My P6List is a little easier to implement than Java's List and it's a little more specific for the data structures we learned. These 11 methods already have stubs in the starter code for this assignment for all data structures.
@@ -37,36 +37,15 @@ I provide errors for:
 
 Prefer the most precise error: ``EmptyListError`` rather than a ``BadIndexError`` when looking for the 5th thing in an empty list.
 
-### Test Code
+## Rubric (100)
 
-Writing good test code is likely to be redundant. This is OK, as it is a stylistic (opinion) choice.
-I have provided good test cases for most of FixedSizeList. In Lab, we will focus on getting the code-coverage of FixedSizeList to 100%.
+Right now, when I run all the tests in this project, I get the following output:
 
-## Rubric (115)
+    
+    Tests run: 126, Failures: 3, Errors: 97, Skipped: 0
 
-Note that the maximum here is lower than usual. This assignment has many sections where you are implementing what was discussed in class, and therefore has far less room for interpretation and extra-credit work.
+So there are 26 passing tets, and 100 failing tests.
 
-In some ways this assignment is much easier than past assignments. In other ways, it is much more difficult. Do not leave it until the last minute.
+Your score on this assignment will range up to 100 -- the number of tests that your code pass, provided (1) there are no code compilation problems with your code (red lines or Problems in Eclipse).  (2) you do not rename any methods or modify the tests in any way, and (3) you resolve any infinite loops in your code (better to comment out that method and have it crash than run forever -- it prevents other tests from running.
 
-### (30) Reflection, Code Compiles and Tests Run.
 
-It is very important your code compiles and you do not change the directory structure. If you have issues importing the code into Eclipse, let me know and we can fix it together. I plan to grade these as automatically as possible.
-
-### (0) Tests
-
-I will not be grading your tests, but you must pass all of my tests.
-
-### (10) GrowableList
-This is newer, but I have completed part of the implementation for you.
-
-### (10) SinglyLinkedList
-We did a variation on this in Lab last week (where e.g., remove did not crash on an empty list). However, we have covered singly-linked lists in great detail.
-
-### (20) DoublyLinkedList
-Getting this right can be very tricky, even with tests. You may refer to [algorithmic pseudocode, if you cite it](https://en.wikipedia.org/wiki/Doubly_linked_list).
-
-### (Max: 25) Efficiency Annotations.
-Comment the methods in ``FixedSizeList``, ``GrowableList``, ``SinglyLinkedList``, ``DoublyLinkedList`` and ``ChunkyLinkedList`` with their big-O efficiency, where O(n) is the size of the list.
-
-### (20) ChunkyLinkedList
-This is a data structure described in the comments and in the partial code given. Work on this after you have implemented ``SinglyLinkedList`` for reasons that will become obvious.
