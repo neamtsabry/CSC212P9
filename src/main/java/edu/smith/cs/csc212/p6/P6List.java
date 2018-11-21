@@ -55,6 +55,7 @@ public interface P6List<T> {
 
 	/**
 	 * Get the first item in the list.
+	 * 
 	 * @return the item.
 	 * @throws EmptyListError
 	 */
@@ -62,6 +63,7 @@ public interface P6List<T> {
 
 	/**
 	 * Get the last item in the list.
+	 * 
 	 * @return the item.
 	 * @throws EmptyListError
 	 */

@@ -2,6 +2,7 @@ package edu.smith.cs.csc212.p6.errors;
 
 /**
  * I've defined this class for all starter code methods you need to implement.
+ * 
  * @author jfoley
  */
 @SuppressWarnings("serial")

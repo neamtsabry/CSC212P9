@@ -18,7 +18,7 @@ public class SLLTest {
 	private <T> P6List<T> makeEmptyList() {
 		return new SinglyLinkedList<>();
 	}
-		
+
 	@Test
 	public void testEmpty() {
 		P6List<String> data = makeEmptyList();
@@ -28,20 +28,20 @@ public class SLLTest {
 		Assert.assertEquals(0, data.size());
 		Assert.assertEquals(true, data.isEmpty());
 	}
-	
-	@Test(expected=EmptyListError.class)
+
+	@Test(expected = EmptyListError.class)
 	public void testRemoveFrontCrash() {
 		P6List<String> data = makeEmptyList();
 		data.removeFront();
 	}
-	
-	@Test(expected=EmptyListError.class)
+
+	@Test(expected = EmptyListError.class)
 	public void testRemoveBackCrash() {
 		P6List<String> data = makeEmptyList();
 		data.removeBack();
 	}
-	
-	@Test(expected=EmptyListError.class)
+
+	@Test(expected = EmptyListError.class)
 	public void testRemoveIndexCrash() {
 		P6List<String> data = makeEmptyList();
 		data.removeIndex(3);
@@ -73,7 +73,7 @@ public class SLLTest {
 		Assert.assertEquals("1", data.getIndex(3));
 		Assert.assertEquals(false, data.isEmpty());
 	}
-	
+
 	@Test
 	public void testAddToBack() {
 		P6List<String> data = makeEmptyList();
@@ -95,9 +95,10 @@ public class SLLTest {
 		Assert.assertEquals("0", data.getIndex(1));
 		Assert.assertEquals("1", data.getIndex(0));
 	}
-	
+
 	/**
 	 * Helper method to make a full list.
+	 * 
 	 * @return
 	 */
 	public P6List<String> makeFullList() {
@@ -108,39 +109,39 @@ public class SLLTest {
 		data.addBack("d");
 		return data;
 	}
-	
+
 	@Test
 	public void testAddBackFull() {
 		P6List<Integer> items = makeEmptyList();
-		for (int i=0; i<GrowableList.START_SIZE*5; i++) {
-			items.addBack((i+1)*3);
-			Assert.assertEquals(i+1, items.size());
-			Assert.assertEquals((i+1)*3, (int) items.getBack()); 
+		for (int i = 0; i < GrowableList.START_SIZE * 5; i++) {
+			items.addBack((i + 1) * 3);
+			Assert.assertEquals(i + 1, items.size());
+			Assert.assertEquals((i + 1) * 3, (int) items.getBack());
 		}
-		for (int i=0; i<GrowableList.START_SIZE*5; i++) {
-			Assert.assertEquals((i+1)*3, (int) items.getIndex(i)); 
+		for (int i = 0; i < GrowableList.START_SIZE * 5; i++) {
+			Assert.assertEquals((i + 1) * 3, (int) items.getIndex(i));
 		}
 	}
-	
+
 	@Test
 	public void testAddFrontFull() {
 		P6List<Integer> items1 = makeEmptyList();
-		for (int i=0; i<GrowableList.START_SIZE*5; i++) {
-			items1.addBack((i+1)*3);
-			Assert.assertEquals(i+1, items1.size());
-			Assert.assertEquals((i+1)*3, (int) items1.getBack()); 
+		for (int i = 0; i < GrowableList.START_SIZE * 5; i++) {
+			items1.addBack((i + 1) * 3);
+			Assert.assertEquals(i + 1, items1.size());
+			Assert.assertEquals((i + 1) * 3, (int) items1.getBack());
 		}
 		P6List<Integer> items2 = makeEmptyList();
-		while(!items1.isEmpty()) {
+		while (!items1.isEmpty()) {
 			items2.addFront(items1.removeBack());
 		}
-		for (int i=0; i<GrowableList.START_SIZE*5; i++) {
-			Assert.assertEquals((i+1)*3, (int) items2.getIndex(i)); 
+		for (int i = 0; i < GrowableList.START_SIZE * 5; i++) {
+			Assert.assertEquals((i + 1) * 3, (int) items2.getIndex(i));
 		}
 	}
-	
+
 	private void insertSorted(P6List<Integer> items, int num) {
-		for (int i=0; i<items.size(); i++) {
+		for (int i = 0; i < items.size(); i++) {
 			if (items.getIndex(i) >= num) {
 				items.addIndex(num, i);
 				return;
@@ -148,28 +149,28 @@ public class SLLTest {
 		}
 		items.addBack(num);
 	}
-	
+
 	@Test
 	public void testAddIndexFull() {
 		P6List<Integer> items1 = makeEmptyList();
-		for (int i=0; i<GrowableList.START_SIZE*5; i++) {
-			items1.addBack((i+1)*3);
-			Assert.assertEquals(i+1, items1.size());
-			Assert.assertEquals((i+1)*3, (int) items1.getBack()); 
+		for (int i = 0; i < GrowableList.START_SIZE * 5; i++) {
+			items1.addBack((i + 1) * 3);
+			Assert.assertEquals(i + 1, items1.size());
+			Assert.assertEquals((i + 1) * 3, (int) items1.getBack());
 		}
-		
+
 		Random rand = new Random(13);
 		P6List<Integer> items2 = makeEmptyList();
-		while(!items1.isEmpty()) {
+		while (!items1.isEmpty()) {
 			int value = items1.removeIndex(rand.nextInt(items1.size()));
 			insertSorted(items2, value);
 		}
-		
-		for (int i=0; i<GrowableList.START_SIZE*5; i++) {
-			Assert.assertEquals((i+1)*3, (int) items2.getIndex(i)); 
+
+		for (int i = 0; i < GrowableList.START_SIZE * 5; i++) {
+			Assert.assertEquals((i + 1) * 3, (int) items2.getIndex(i));
 		}
 	}
-	
+
 	@Test
 	public void testRemoveFront() {
 		P6List<String> data = makeFullList();
@@ -183,7 +184,7 @@ public class SLLTest {
 		Assert.assertEquals("d", data.removeFront());
 		Assert.assertEquals(0, data.size());
 	}
-	
+
 	@Test
 	public void testRemoveBack() {
 		P6List<String> data = makeFullList();
@@ -197,7 +198,7 @@ public class SLLTest {
 		Assert.assertEquals("a", data.removeBack());
 		Assert.assertEquals(0, data.size());
 	}
-	
+
 	@Test
 	public void testRemoveIndex() {
 		P6List<String> data = makeFullList();
@@ -211,7 +212,7 @@ public class SLLTest {
 		Assert.assertEquals("a", data.removeIndex(0));
 		Assert.assertEquals(0, data.size());
 	}
-	
+
 	@Test
 	public void testAddIndexFront() {
 		P6List<String> data = makeEmptyList();
@@ -223,7 +224,7 @@ public class SLLTest {
 		Assert.assertEquals("B", data.getFront());
 		Assert.assertEquals("A", data.getBack());
 	}
-	
+
 	@Test
 	public void testAddIndexBack() {
 		P6List<String> data = makeEmptyList();
@@ -235,7 +236,7 @@ public class SLLTest {
 		Assert.assertEquals("A", data.getFront());
 		Assert.assertEquals("B", data.getBack());
 	}
-	
+
 	@Test
 	public void testAddIndexCenter() {
 		P6List<String> data = makeEmptyList();
@@ -244,82 +245,82 @@ public class SLLTest {
 		data.addBack("D");
 		data.addBack("E");
 		Assert.assertEquals(4, data.size());
-		
+
 		data.addIndex("B", 1);
 		Assert.assertEquals(5, data.size());
 		Assert.assertEquals("B", data.getIndex(1));
 	}
-	
+
 	@Test
 	public void testGetFront() {
 		P6List<String> data = makeFullList();
 		assertEquals("a", data.getFront());
 	}
-	
+
 	@Test
 	public void testGetBack() {
 		P6List<String> data = makeFullList();
 		assertEquals("d", data.getBack());
 	}
-	
-	@Test(expected=EmptyListError.class)
+
+	@Test(expected = EmptyListError.class)
 	public void testGetFrontCrash() {
 		P6List<String> data = makeEmptyList();
 		data.getFront();
 	}
-	
-	@Test(expected=EmptyListError.class)
+
+	@Test(expected = EmptyListError.class)
 	public void testGetBackCrash() {
 		P6List<String> data = makeEmptyList();
 		data.getBack();
 	}
-	
-	@Test(expected=BadIndexError.class)
+
+	@Test(expected = BadIndexError.class)
 	public void testGetIndexLow() {
 		P6List<String> data = makeFullList();
 		data.getIndex(-2);
 	}
-	
-	@Test(expected=BadIndexError.class)
+
+	@Test(expected = BadIndexError.class)
 	public void testGetIndexHigh() {
 		P6List<String> data = makeFullList();
 		data.getIndex(data.size());
 	}
-	
-	@Test(expected=BadIndexError.class)
+
+	@Test(expected = BadIndexError.class)
 	public void testGetIndexHighEasy() {
 		P6List<String> data = makeFullList();
-		data.getIndex(data.size()*2);
+		data.getIndex(data.size() * 2);
 	}
-	
-	@Test(expected=BadIndexError.class)
+
+	@Test(expected = BadIndexError.class)
 	public void testAddIndexHighEasy() {
 		P6List<String> data = makeFullList();
-		data.addIndex("the", data.size()*2);
+		data.addIndex("the", data.size() * 2);
 	}
-	
-	@Test(expected=BadIndexError.class)
+
+	@Test(expected = BadIndexError.class)
 	public void testAddIndexHigh() {
 		P6List<String> data = makeFullList();
-		data.addIndex("the", data.size()+1);
+		data.addIndex("the", data.size() + 1);
 	}
-	
-	@Test(expected=BadIndexError.class)
+
+	@Test(expected = BadIndexError.class)
 	public void testAddIndexLow() {
 		P6List<String> data = makeFullList();
 		data.addIndex("the", -1);
 	}
-	
+
 	@Test
 	public void testQueue() {
 		P6List<Integer> data = makeEmptyList();
-		
-		for (int trial=0; trial<4; trial++) {
-			for (int i=0; i<20; i++) {
+
+		for (int trial = 0; trial < 4; trial++) {
+			for (int i = 0; i < 20; i++) {
 				data.addBack(i);
 			}
-			for (int i=0; i<20; i++) {
-				//System.err.println("Assertion-Debug: "+trial+", value: "+i);
+			for (int i = 0; i < 20; i++) {
+				// System.err.println("Assertion-Debug: "+trial+", value: "+i);
 				Assert.assertEquals(i, (int) data.removeFront());
 			}
 		}

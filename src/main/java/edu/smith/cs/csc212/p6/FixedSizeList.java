@@ -7,7 +7,7 @@ import edu.smith.cs.csc212.p6.errors.RanOutOfSpaceError;
 public class FixedSizeList<T> implements P6List<T> {
 	private Object[] array;
 	private int fill;
-	
+
 	public FixedSizeList(int maximumSize) {
 		this.array = new Object[maximumSize];
 		this.fill = 0;
@@ -23,7 +23,7 @@ public class FixedSizeList<T> implements P6List<T> {
 		if (this.size() == 0) {
 			throw new EmptyListError();
 		}
-		T value = this.getIndex(fill-1);
+		T value = this.getIndex(fill - 1);
 		fill--;
 		this.array[fill] = null;
 		return value;
@@ -36,8 +36,8 @@ public class FixedSizeList<T> implements P6List<T> {
 		}
 		T removed = this.getIndex(index);
 		fill--;
-		for (int i=index; i<fill; i++) {
-			this.array[i] = this.array[i+1];
+		for (int i = index; i < fill; i++) {
+			this.array[i] = this.array[i + 1];
 		}
 		this.array[fill] = null;
 		return removed;
@@ -45,7 +45,7 @@ public class FixedSizeList<T> implements P6List<T> {
 
 	@Override
 	public void addFront(T item) {
-		addIndex(item, 0);		
+		addIndex(item, 0);
 	}
 
 	@Override
@@ -63,17 +63,17 @@ public class FixedSizeList<T> implements P6List<T> {
 			throw new RanOutOfSpaceError();
 		}
 		// loop backwards, shifting items to the right.
-		for (int j=fill; j>index; j--) {
-			array[j] = array[j-1];
+		for (int j = fill; j > index; j--) {
+			array[j] = array[j - 1];
 		}
 		array[index] = item;
-		fill++;		
+		fill++;
 	}
 
 	/**
-	 * Do not allow unchecked warnings in any other method.
-	 * Keep the "guessing" the objects are actually a T here.
-	 * Do that by calling this method instead of using the array directly.
+	 * Do not allow unchecked warnings in any other method. Keep the "guessing" the
+	 * objects are actually a T here. Do that by calling this method instead of
+	 * using the array directly.
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -107,13 +107,13 @@ public class FixedSizeList<T> implements P6List<T> {
 		if (this.isEmpty()) {
 			throw new EmptyListError();
 		}
-		return this.getIndex(this.size()-1);
+		return this.getIndex(this.size() - 1);
 	}
-	
+
 	// O(n)
 	// [1,2,3,4,5,6,7].find(10)
 	public int find(T item) {
-		for (int i=0; i<fill; i++) {
+		for (int i = 0; i < fill; i++) {
 			// check each item one at a time.
 			if (item.equals(array[i])) {
 				return i;
@@ -122,14 +122,12 @@ public class FixedSizeList<T> implements P6List<T> {
 		// this represents not found
 		return -1;
 	}
-	
+
 	/**
-	 * arr = [1,2,3]
-	 * arr[2] = 4
-	 * arr = [1,2,4]
+	 * arr = [1,2,3] arr[2] = 4 arr = [1,2,4]
 	 * 
-	 * arr[-1] => crash
-	 * arr[10000] => crash if fill = 4
+	 * arr[-1] => crash arr[10000] => crash if fill = 4
+	 * 
 	 * @param index
 	 * @param item
 	 */
@@ -140,7 +138,7 @@ public class FixedSizeList<T> implements P6List<T> {
 		}
 		array[index] = item;
 	}
-	
+
 	public void swap(int i, int j) {
 		T tmp = getIndex(i);
 		setIndex(i, getIndex(j));
